@@ -1,0 +1,12 @@
+[gd_scene format=3]
+
+[node name="Main" type="Node2D"]
+
+[node name="Placeholder" type="Label" parent="."]
+offset_left = 560.0
+offset_top = 420.0
+offset_right = 880.0
+offset_bottom = 480.0
+text = "CUT THE SKY
+scaffold OK — core loop lands here"
+horizontal_alignment = 1

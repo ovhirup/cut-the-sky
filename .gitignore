@@ -1,0 +1,19 @@
+# Godot
+.godot/
+*.translation
+export_presets.cfg.secret
+
+# Build outputs (rebuildable; notarized archives are release artifacts)
+/build/
+/dist/
+*.dmg
+*.zip
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Secrets / signing
+*.p12
+*.provisionprofile
+.env
