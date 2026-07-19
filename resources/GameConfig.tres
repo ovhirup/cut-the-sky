@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="GameConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/GameConfig.gd" id="1_cfg"]
+
+[resource]
+script = ExtResource("1_cfg")
+spring_stiffness = 7.0
+velocity_damping = 3.2
+max_speed = 900.0
+accel_max_loose = 1800.0
+accel_max_tight = 4200.0
+grip_lerp_speed = 8.0
+tension_hold_rate = 0.55
+tension_release_rate = 0.75
+sharp_threshold = 0.35
+critical_threshold = 0.82
+min_cut_angle_deg = 35.0
+ribbon_sample_hz = 20.0
+ribbon_history_sec = 2.75
+ribbon_width = 6.0
+wind_strength = 260.0
+wind_gust_strength = 340.0
+wind_loose_multiplier = 1.0
+wind_tight_multiplier = 0.35

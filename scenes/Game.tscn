@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/Game.gd" id="1_game"]
+[ext_resource type="PackedScene" path="res://scenes/PlayerKite.tscn" id="2_kite"]
+[ext_resource type="Script" path="res://scripts/WindSystem.gd" id="3_wind"]
+
+[sub_resource type="Gradient" id="Gradient_sky"]
+offsets = PackedFloat32Array(0, 0.55, 1)
+colors = PackedColorArray(0.13, 0.19, 0.38, 1, 0.94, 0.87, 0.76, 1, 1, 0.67, 0.29, 1)
+
+[sub_resource type="GradientTexture2D" id="GradTex_sky"]
+gradient = SubResource("Gradient_sky")
+fill_from = Vector2(0, 0)
+fill_to = Vector2(0, 1)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_game")
+
+[node name="Sky" type="TextureRect" parent="."]
+z_index = -10
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand_mode = 1
+texture = SubResource("GradTex_sky")
+
+[node name="WindSystem" type="Node" parent="."]
+script = ExtResource("3_wind")
+
+[node name="PlayerKite" parent="." instance=ExtResource("2_kite")]
+position = Vector2(720, 480)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="TopLeft" type="VBoxContainer" parent="HUD"]
+offset_left = 24.0
+offset_top = 20.0
+offset_right = 260.0
+offset_bottom = 84.0
+
+[node name="TensionBar" type="ProgressBar" parent="HUD/TopLeft"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 14)
+max_value = 1.0
+step = 0.001
+show_percentage = false
+
+[node name="StateLabel" type="Label" parent="HUD/TopLeft"]
+unique_name_in_owner = true
+text = "LOOSE"
+
+[node name="HintLabel" type="Label" parent="HUD"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -280.0
+offset_top = -48.0
+offset_right = 280.0
+offset_bottom = -20.0
+text = "Move to steer  ·  Hold to tighten  ·  R restarts"
+horizontal_alignment = 1
+
+[node name="SnapLabel" type="Label" parent="HUD"]
+unique_name_in_owner = true
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -30.0
+offset_right = 300.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 40
+text = "LINE SNAPPED — press R"
+horizontal_alignment = 1

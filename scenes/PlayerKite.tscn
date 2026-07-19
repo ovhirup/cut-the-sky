@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/PlayerKite.gd" id="1_kite"]
+[ext_resource type="Script" path="res://scripts/RibbonTrail.gd" id="2_ribbon"]
+
+[node name="PlayerKite" type="Node2D"]
+script = ExtResource("1_kite")
+
+[node name="RibbonTrail" type="Line2D" parent="."]
+top_level = true
+script = ExtResource("2_ribbon")
+
+[node name="Body" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, -34, 22, 0, 0, 46, -22, 0)
+color = Color(1, 0.45, 0.15, 1)
+
+[node name="Spine" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-1.5, -34, 1.5, -34, 1.5, 46, -1.5, 46)
+color = Color(0.99, 0.94, 0.86, 1)
+
+[node name="CrossSpar" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-22, -1.5, 22, -1.5, 22, 1.5, -22, 1.5)
+color = Color(0.99, 0.94, 0.86, 1)
