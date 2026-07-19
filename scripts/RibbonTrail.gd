@@ -25,7 +25,7 @@ func _ready() -> void:
 	width = CONFIG.ribbon_width
 
 func _physics_process(delta: float) -> void:
-	var kite := get_parent() as PlayerKite
+	var kite := get_parent() as Kite
 	if kite and kite.alive:
 		_accum += delta
 		var interval := 1.0 / CONFIG.ribbon_sample_hz

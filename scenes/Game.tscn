@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://scripts/Game.gd" id="1_game"]
 [ext_resource type="PackedScene" path="res://scenes/PlayerKite.tscn" id="2_kite"]
 [ext_resource type="Script" path="res://scripts/WindSystem.gd" id="3_wind"]
+[ext_resource type="Script" path="res://scripts/EnemyDirector.gd" id="4_dir"]
+[ext_resource type="Script" path="res://scripts/ScoreManager.gd" id="5_score"]
 
 [sub_resource type="Gradient" id="Gradient_sky"]
 offsets = PackedFloat32Array(0, 0.55, 1)
@@ -26,6 +28,14 @@ texture = SubResource("GradTex_sky")
 [node name="WindSystem" type="Node" parent="."]
 script = ExtResource("3_wind")
 
+[node name="ScoreManager" type="Node" parent="."]
+script = ExtResource("5_score")
+
+[node name="EnemyDirector" type="Node" parent="."]
+script = ExtResource("4_dir")
+
+[node name="CutFX" type="Node2D" parent="."]
+
 [node name="PlayerKite" parent="." instance=ExtResource("2_kite")]
 position = Vector2(720, 480)
 
@@ -34,8 +44,18 @@ position = Vector2(720, 480)
 [node name="TopLeft" type="VBoxContainer" parent="HUD"]
 offset_left = 24.0
 offset_top = 20.0
-offset_right = 260.0
-offset_bottom = 84.0
+offset_right = 300.0
+offset_bottom = 120.0
+
+[node name="ScoreLabel" type="Label" parent="HUD/TopLeft"]
+unique_name_in_owner = true
+theme_override_font_sizes/font_size = 36
+text = "0"
+
+[node name="ComboLabel" type="Label" parent="HUD/TopLeft"]
+unique_name_in_owner = true
+theme_override_colors/font_color = Color(1, 0.72, 0.18, 1)
+text = ""
 
 [node name="TensionBar" type="ProgressBar" parent="HUD/TopLeft"]
 unique_name_in_owner = true
@@ -53,24 +73,34 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -280.0
-offset_top = -48.0
-offset_right = 280.0
+offset_left = -320.0
+offset_top = -46.0
+offset_right = 320.0
 offset_bottom = -20.0
-text = "Move to steer  ·  Hold to tighten  ·  R restarts"
+text = "Move to steer  ·  Hold to tighten & cut  ·  R restarts"
 horizontal_alignment = 1
 
-[node name="SnapLabel" type="Label" parent="HUD"]
+[node name="OverPanel" type="Control" parent="HUD"]
 unique_name_in_owner = true
-visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Dim" type="ColorRect" parent="HUD/OverPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.55)
+
+[node name="OverText" type="Label" parent="HUD/OverPanel"]
+unique_name_in_owner = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -30.0
-offset_right = 300.0
-offset_bottom = 30.0
-theme_override_font_sizes/font_size = 40
-text = "LINE SNAPPED — press R"
+offset_left = -320.0
+offset_top = -200.0
+offset_right = 320.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 30
+text = ""
 horizontal_alignment = 1
+vertical_alignment = 1
